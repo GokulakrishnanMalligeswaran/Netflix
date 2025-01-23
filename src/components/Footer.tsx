@@ -1,12 +1,11 @@
-import React from 'react'
 import youtube_icon from "../Assets/assets/youtube_icon.png"
 import x_icon from "../Assets/assets/x_logo.png"
 import instagram_icon from "../Assets/assets/instagram_icon.png"
 import facebook_icon from "../Assets/assets/facebook_icon.png"
 const Footer = () => {
   return (
-    <div className="text-white font-thin bg-black">
-        <div className="flex w-8">
+    <div className=" font-thin m-5 text-center">
+        <div className="flex w-8 ml-32 my-8 ">
             <img src={youtube_icon} alt="" />
             <img src={x_icon} alt="" className="rounded-full " />
             <img src={instagram_icon} alt="" />

@@ -1,78 +1,54 @@
-// import React from 'react'
-// import search_icon from "../Assets/assets/search_icon.svg"
-// import bell_icon from "../Assets/assets/bell_icon.svg"
-// import profile_icon from "../Assets/assets/profile_img.png"
-// import caret_icon from "../Assets/assets/caret_icon.svg"
-// import logo from "../Assets/assets/logo.png"
-// const Navbar = () => {
-//   return (
-//     <div className='text-white flex'>
-//         <div className="flex p-10">
-//             <img src={logo} alt="" className="w-28 h-6"/>
-//             <ul className="flex  font-sans font-medium capitalize pl-10">
-//                 <li className="pr-10">home</li>
-//                 <li className="pr-10">tv shows</li>
-//                 <li className="pr-10">movies</li>
-//                 <li className="pr-10">new & popular</li>
-//                 <li className="pr-10">My List</li>
-//                 <li>Browse By Language</li>
-//             </ul>
-//         </div>
-//         <div className="flex align-center">
-//             <img src={search_icon} alt="" className="w-4"/>
-//             <p>Children</p>
-//             <img src={bell_icon} alt="" className="w-4"/>
-//             <div className="flex">
-//                 <img src={profile_icon} alt="" />
-//                 <img src={caret_icon} alt="" />
-//                 <div>
-//                     <p>Sign Out of Netfkix</p>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Navbar
-
-import React from 'react';
-import search_icon from "../Assets/assets/search_icon.svg";
+ import search_icon from "../Assets/assets/search_icon.svg";
 import bell_icon from "../Assets/assets/bell_icon.svg";
 import profile_icon from "../Assets/assets/profile_img.png";
 import caret_icon from "../Assets/assets/caret_icon.svg";
 import logo from "../Assets/assets/logo.png";
+import { useEffect, useRef } from "react";
+import { logout } from "../Firebase";
 
 const Navbar = () => {
+  const navRef=useRef<HTMLDivElement>(null);
+  useEffect(()=>{
+window.addEventListener('scroll',()=>{
+  if(navRef.current){
+    if(window.scrollY >=80){
+      navRef.current.classList.add("bg-black","bg-opacity-100")
+    }else{
+      navRef.current.classList.remove("bg-black","bg-opacity-100")
+  
+  }
+  }
+})
+  },[])
   return (
-    <div className='text-white flex justify-between items-center px-6 py-4'>
+    <div ref={navRef} className=' w-full flex justify-between text-{14px} font fixed items-center px-5 py-4  z-10'>
       {/* Left Side: Logo and Menu */}
-      <div className="flex items-center">
-        <img src={logo} alt="Logo" className="w-28 h-6" />
+      <div className="flex items-center gap-12">
+        <img src={logo} alt="Logo" className="w-24 h-6" />
         <ul className="flex ml-10 space-x-10 font-sans font-medium">
-          <li>Home</li>
-          <li>TV Shows</li>
-          <li>Movies</li>
-          <li>New & Popular</li>
-          <li>My List</li>
-          <li>Browse by Language</li>
+          <li className="cursor-pointer">Home</li>
+          <li className="cursor-pointer">TV Shows</li>
+          <li className="cursor-pointer">Movies</li>
+          <li className="cursor-pointer">New & Popular</li>
+          <li className="cursor-pointer">My List</li>
+          <li className="cursor-pointer">Browse by Language</li>
         </ul>
       </div>
       
       {/* Right Side: Search, Notification, Profile */}
       <div className="flex items-center space-x-6">
         {/* Search Icon */}
-        <img src={search_icon} alt="Search" className="w-6 h-6 cursor-pointer" />
-        
+        <img src={search_icon} alt="Search" className="w-5 h-5 cursor-pointer" />
+        <p>Children</p>
         {/* Notification Bell */}
-        <img src={bell_icon} alt="Notifications" className="w-6 h-6 cursor-pointer" />
+        <img src={bell_icon} alt="Notifications" className="w-5 h-5 cursor-pointer" />
         
         {/* Profile */}
-        <div className="flex items-center space-x-2">
-          <img src={profile_icon} alt="Profile" className="w-8 h-8 rounded-full cursor-pointer" />
+        <div className="flex items-center space-x-2 relative group">
+          <img src={profile_icon} alt="Profile" className="w-5 h-5 rounded-full cursor-pointer" />
           <img src={caret_icon} alt="Caret" className="w-4 h-4 cursor-pointer" />
-          <div className="absolute bg-black text-white p-2 rounded mt-8 hidden group-hover:block">
-            <p>Sign Out of Netflix</p>
+          <div className="absolute top-full right-0 p-5 rounded-sm w-max bg-black z-10 hidden group-hover:block">
+            <p className="text-{13px} cursor-pointer" onClick={()=>{logout()}}>Sign Out of Netflix</p>
           </div>
         </div>
       </div>

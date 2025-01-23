@@ -1,19 +1,34 @@
-import Footer from "./components/Footer"
 import Login from "./components/Login"
-import Navbar from "./components/Navbar"
-import TitleCards from "./components/TitleCards"
-// import Home from "./pages/Home"
-import {Routes,Route} from "react-router-dom"
+import {Routes,Route, useNavigate} from "react-router-dom"
+import Home from "./pages/Home"
+import Player from "./pages/Player"
+import { onAuthStateChanged } from "firebase/auth"
+import { useEffect } from "react"
+import { auth } from "./Firebase"
+import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {
+  const navigate=useNavigate();
+  useEffect(()=>{
+    onAuthStateChanged(auth,async (user)=>{
+      if(user){
+        console.log("logged in")
+        navigate('/')
+      }
+      else{
+        console.log("logged out")
+        navigate('/login')
+      }
+    })
+  },[])
   return (
-    <div className="bg-black bg-opacity-90">
-      <Navbar/>
+    <div className="">
+      <ToastContainer theme="dark"/>
       <Routes>
-        <Route path="/" element={<TitleCards/>}/>
+        <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/player/:id" element={<Player />} />
         </Routes>
-      <Footer/>
     </div>
   )
 }
