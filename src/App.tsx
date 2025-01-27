@@ -5,7 +5,7 @@ import Player from "./pages/Player"
 import { onAuthStateChanged } from "firebase/auth"
 import { useEffect } from "react"
 import { auth } from "./Firebase"
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const navigate=useNavigate();

@@ -23,15 +23,15 @@ window.addEventListener('scroll',()=>{
   return (
     <div ref={navRef} className=' w-full flex justify-between text-{14px} font fixed items-center px-5 py-4  z-10'>
       {/* Left Side: Logo and Menu */}
-      <div className="flex items-center gap-12">
-        <img src={logo} alt="Logo" className="w-24 h-6" />
-        <ul className="flex ml-10 space-x-10 font-sans font-medium">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">TV Shows</li>
-          <li className="cursor-pointer">Movies</li>
-          <li className="cursor-pointer">New & Popular</li>
-          <li className="cursor-pointer">My List</li>
-          <li className="cursor-pointer">Browse by Language</li>
+      <div className="flex items-center gap-12 lg:[ gap-6]">
+        <img src={logo} alt="Logo" className="w-24 h-6 md:[w-16 h-4]" />
+        <ul className="flex ml-10 space-x-10 font-sans font-medium md:[text-[10px] ml-0] lg:ml-0 text-[16px] xl:text-[16px] ">
+          <li className="cursor-pointer hover:text-red-600 ">Home</li>
+          <li className="cursor-pointer hover:text-red-600">TV Shows</li>
+          <li className="cursor-pointer hover:text-red-600">Movies</li>
+          <li className="cursor-pointer hover:text-red-600">New & Popular</li>
+          <li className="cursor-pointer hover:text-red-600">My List</li>
+          <li className="cursor-pointer hover:text-red-600">Browse by Language</li>
         </ul>
       </div>
       
@@ -48,7 +48,7 @@ window.addEventListener('scroll',()=>{
           <img src={profile_icon} alt="Profile" className="w-5 h-5 rounded-full cursor-pointer" />
           <img src={caret_icon} alt="Caret" className="w-4 h-4 cursor-pointer" />
           <div className="absolute top-full right-0 p-5 rounded-sm w-max bg-black z-10 hidden group-hover:block">
-            <p className="text-{13px} cursor-pointer" onClick={()=>{logout()}}>Sign Out of Netflix</p>
+            <p className="text-{13px} cursor-pointer hover:text-red-600" onClick={()=>{logout()}}>Sign Out</p>
           </div>
         </div>
       </div>
