@@ -12,17 +12,15 @@ const App = () => {
   useEffect(()=>{
     onAuthStateChanged(auth,async (user)=>{
       if(user){
-        console.log("logged in")
         navigate('/')
       }
       else{
-        console.log("logged out")
         navigate('/login')
       }
     })
   },[])
   return (
-    <div className="">
+    <div className="w-screen h-screen overflow-x-hidden">
       <ToastContainer theme="dark"/>
       <Routes>
         <Route path="/" element={<Home />}/>
@@ -30,7 +28,8 @@ const App = () => {
         <Route path="/player/:id" element={<Player />} />
         </Routes>
     </div>
-  )
+    
+      )
 }
 
 export default App

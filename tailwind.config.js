@@ -7,6 +7,7 @@ export default {
       screens:{
         'custom':'1126px',
         'xxs':'400px',
+        'xms':'450px',
         'xs':'500px'
         
       }

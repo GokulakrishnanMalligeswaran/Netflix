@@ -47,18 +47,21 @@ const TitleCards = ({title,category}:{title?:string;category:string}) => {
   
   return (
     <div>
-      <h2 className="mb-2 text-[28px] pl-3">{ title?title:"Popular on Netflix"}</h2>
+      <h2 className="mb-2 text-3xl   pl-3 max-xs:text-xl max-sm:text-2xl">{ title?title:"Popular on Netflix"}</h2>
     <div className="w-full my-3 overflow-x-scroll whitespace-nowrap [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"> 
       <div className="flex box-content">
         {apiData.map((card, index) => {
           return (
-            <Link to={`/player/${card.id}`} key={index} className="relative  px-2">
+            <Link to={`/player/${card.id}`} key={index} className="relative  px-2 max-xxs:min-w-full  max-sm:min-w-[50%]
+            max-md:min-w-[40%]
+            ">
               <img
                 src={`https://image.tmdb.org/t/p/w500/`+card.backdrop_path}
                 alt=""
-                className="min-w-60  rounded cursor-pointer opacity-60"
+                className="min-w-64  rounded cursor-pointer opacity-60 max-xs:min-w-[40%]
+                 "
               />
-              <p className="absolute bottom-2 left-2">{card.original_title}</p>
+              <p className="absolute bottom-2 left-2 max-sm:text-xs max-xxs:text-base">{card.original_title}</p>
             </Link>
           );
         })}
