@@ -25,13 +25,13 @@ const user_auth=async (event:React.MouseEvent<HTMLButtonElement>)=>{
 
   return (
     // loading indication
-    loading?<div className="w-full h-screen flex items-center justify-center ">
+    loading?<div className="w-full h-screen flex items-center justify-center">
       <img src={netflix_spinner} alt="" className="w-14"/>
     </div>:
-    <div className="flex flex-col  items-center w-screen relative ">
-      <img src={background_image} alt=""  className="absolute z-0 md:bg-cover  "/>
+    <div className="flex flex-col relative items-center w-screen">
+      <img src={background_image} alt=""  className="w-full h-screen  absolute object-cover " />
       
-      <div className="bg-black bg-opacity-80  w-96  p-10 max-h-fit  rounded-md z-10 border shadow-md shadow-gray-800 justify-self-center items-center mt-32">
+      <div className="bg-black bg-opacity-80  p-10 rounded-md z-10 border shadow-md shadow-gray-800 justify-self-center items-center mt-32 max-xs:max-w-[95%] max-sm:w-96 w-96 ">
         <h1 className="text-2xl text-red-600 font-bold text-center">{signState}</h1>
         <form action="" className="flex flex-col py-2 ">
           {signState==="Log In"?null:<input value={name} onChange={(e)=>{setName(e.target.value)}}
